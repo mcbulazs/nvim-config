@@ -11,22 +11,24 @@ return require('packer').startup(function(use)
     }
 
     use({
-	'navarasu/onedark.nvim',
-	as = 'onedark',
-	config = function()
-		require('onedark').setup {
-			style = 'darker'
-		}
-		require('onedark').load()
-		vim.cmd('colorscheme onedark')
-	end
+        'navarasu/onedark.nvim',
+        as = 'onedark',
+        config = function()
+            require('onedark').setup {
+                style = 'darker'
+            }
+            require('onedark').load()
+            vim.cmd('colorscheme onedark')
+        end
     })
 
     use('RRethy/vim-illuminate')
 
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-    use('theprimeagen/harpoon')
+    use { 'theprimeagen/harpoon',
+        branch = 'harpoon2'
+    }
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
     use('tpope/vim-commentary')
