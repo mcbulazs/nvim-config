@@ -1,0 +1,52 @@
+{
+    "JSON tag": {
+             "prefix": "tag",
+             "body": [
+                 "`json:\"$1\"`"
+             ],
+             "description": "Log output to console"
+         },
+    "Http error": {
+             "prefix": "httperr",
+             "body": [
+                "if err != nil {",
+                "    http.Error(w, err.Error(), http.StatusInternalServerError)",
+                "    return",
+                "}"
+             ],
+             "description": "http default error"
+         },
+    "Http controller": {
+        "prefix": "controller",
+        "body": [
+           "func $1(w http.ResponseWriter, r *http.Request) {",
+           "    $2",
+           "}"
+        ],
+        "description": "default controller"
+    },
+    "model": {
+        "prefix": "model",
+        "body": [
+            "package models",
+            "",
+           "type $1 struct {",
+           "    $2",
+           "}"
+        ],
+        "description": "default model"
+    },
+    "transaction": {
+        "prefix": "transaction",
+        "body": [
+            "tx, commitOrRollback, err := db.BeginTransaction()",
+            "if err != nil {",
+                "return nil, err",
+            "}",
+            "defer commitOrRollback(&err)"
+        ],
+        "description": "transaction creation"
+    },
+
+
+}

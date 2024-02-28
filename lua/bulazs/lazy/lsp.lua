@@ -17,11 +17,11 @@ return {
                     dependencies = "rafamadriz/friendly-snippets",
                     build = "make install_jsregexp",
                     opts = { history = true, updateevents = "TextChanged,TextChangedI" },
---                     config = function()
---                         require('luasnip').filetype_extend("ts", { "angular" })
---                         require('luasnip').filetype_extend("css", { "angular" })
---                         require('luasnip').filetype_extend("html", { "angular" })
---                     end
+                    config = function()
+                        --  require('luasnip').filetype_extend("ts", { "angular" })
+                        --  require('luasnip').filetype_extend("css", { "angular" })
+                        --  require('luasnip').filetype_extend("html", { "angular" })
+                    end
                 }
             },
         },
@@ -31,6 +31,7 @@ return {
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
         require("luasnip.loaders.from_vscode").lazy_load()
+        require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/nvim/snippets" })
         local capabilities = vim.tbl_deep_extend(
             "force",
             {},
