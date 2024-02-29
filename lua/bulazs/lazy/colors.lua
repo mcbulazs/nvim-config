@@ -2,21 +2,21 @@ local isTransparent = true
 
 function ToggleTransparent()
     isTransparent = not isTransparent
-    vim.cmd('Lazy reload ' .. vim.g.colors_name)
+    vim.cmd("Lazy reload " .. vim.g.colors_name)
 end
 
 return {
     {
-        'navarasu/onedark.nvim',
-        name = 'onedark',
+        "navarasu/onedark.nvim",
+        name = "onedark",
         config = function()
-            require('onedark').setup {
+            require("onedark").setup({
                 transparent = isTransparent,
-                style = 'deep',
-            }
-            require('onedark').load()
-            vim.cmd('colorscheme onedark')
-        end
+                style = "deep",
+            })
+            require("onedark").load()
+            vim.cmd("colorscheme onedark")
+        end,
     },
     {
         "folke/tokyonight.nvim",
@@ -35,6 +35,6 @@ return {
                     --float = "transparent",
                 },
             })
-        end
+        end,
     },
 }
