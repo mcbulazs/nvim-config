@@ -47,6 +47,8 @@
         ],
         "description": "transaction creation"
     },
-
-
+    "test": {
+        "prefix": "test",
+        "body": "test"
+    }
 }
