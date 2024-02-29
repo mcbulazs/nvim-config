@@ -30,9 +30,6 @@ return {
                 styles = {
                     comments = { italic = false },
                     keywords = { italic = false },
-                    -- Background styles. Can be "dark", "transparent" or "normal"
-                    --sidebar = "transparent",
-                    --float = "transparent",
                 },
             })
         end,
