@@ -103,8 +103,9 @@ return {
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
                 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
                 vim.keymap.set("n", "<leader>f", function()
-                    vim.lsp.buf.format({ async = true })
+                    vim.lsp.buf.format({ async = false })
                     vim.cmd("write")
+                    print("Formatted and Saved")
                 end, opts)
             end,
         })
