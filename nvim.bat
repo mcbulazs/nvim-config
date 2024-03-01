@@ -14,5 +14,5 @@ if "%~1"=="" (
         
     )
 )
-wt.exe new-tab -p Ubuntu -- wsl.exe -d Ubuntu /usr/bin/zsh -ci "cd $(echo '!unixPath!' | tr '[:upper:]' '[:lower:]' | sed 's:\\:/:g') && nvim -c 'Ex'&& zsh -i"
+wt.exe new-tab -p Ubuntu -- wsl.exe -d Ubuntu /usr/bin/zsh -ci "cd $(echo '!unixPath!' | tr '[:upper:]' '[:lower:]') && nvim -c 'Ex'&& zsh -i"
 endlocal
