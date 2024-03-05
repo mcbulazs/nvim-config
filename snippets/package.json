@@ -1,13 +1,13 @@
 {
-    "name": "snippets",
-    "contributes": {
-        "snippets": [
-            {
-                "language": [
-                    "go"
-                ],
-                "path": "./snippets/go.json"
-            }
-        ]
-    }
+  "name": "snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "go"
+        ],
+        "path": "./snippets/go.json"
+      }
+    ]
+  }
 }

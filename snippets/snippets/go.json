@@ -6,6 +6,15 @@
              ],
              "description": "Log output to console"
          },
+    "iferr": {
+             "prefix": "iferr",
+             "body": [
+                "if err != nil {",
+                "    return nil, err",
+                "}"
+             ],
+             "description": "default error return"
+         },
     "Http error": {
              "prefix": "httperr",
              "body": [
@@ -47,8 +56,4 @@
         ],
         "description": "transaction creation"
     },
-    "test": {
-        "prefix": "test",
-        "body": "test"
-    }
 }
