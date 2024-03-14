@@ -31,6 +31,7 @@ return {
         require("telescope").setup({
             defaults = {
                 path_display = { "truncate", "smart" },
+                file_ignore_patterns = { "node%_modules/.*", "package%-lock.json" },
             },
             pickers = {
                 live_grep = {

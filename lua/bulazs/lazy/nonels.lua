@@ -8,18 +8,20 @@ return {
 
         null_ls.setup({
             sources = {
+                --https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md
                 null_ls.builtins.formatting.stylua,
 
                 null_ls.builtins.formatting.gofumpt,
                 null_ls.builtins.formatting.goimports_reviser,
                 null_ls.builtins.diagnostics.golangci_lint,
-
-                null_ls.builtins.formatting.prettierd.with({
-                    env = {
-                        PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/utils/linter-config/.prettierrc.json"),
-                    },
+                null_ls.builtins.diagnostics.sqlfluff.with({
+                    extra_args = { "--dialect", "postgres" }, -- change to your dialect
                 }),
-                null_ls.builtins.formatting.clang_format,
+                null_ls.builtins.formatting.sqlfmt,
+
+                --php remove after uni
+                null_ls.builtins.formatting.phpcsfixer,
+                null_ls.builtins.diagnostics.phpstan,
             },
         })
     end,

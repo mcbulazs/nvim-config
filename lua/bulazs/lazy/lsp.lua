@@ -12,6 +12,7 @@ return {
         "j-hui/fidget.nvim",
         "hrsh7th/nvim-cmp",
         "nvimtools/none-ls.nvim",
+        "mfussenegger/nvim-jdtls",
     },
 
     config = function()
@@ -55,9 +56,14 @@ return {
                         },
                     })
                 end,
+                ["jdtls"] = function() end,
             },
         })
-
+        local clangdCapabilities = vim.lsp.protocol.make_client_capabilities()
+        clangdCapabilities.offsetEncoding = { "utf-8", "utf-16" }
+        require("lspconfig").clangd.setup({
+            capabilities = { clangdCapabilities, capabilities },
+        })
         cmp.setup({
             snippet = {
                 expand = function(args)
