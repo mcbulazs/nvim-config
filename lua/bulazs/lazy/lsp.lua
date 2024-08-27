@@ -28,6 +28,10 @@ return {
         )
 
         require("fidget").setup({})
+        --Biome
+        require("lspconfig").biome.setup({
+            capabilities = capabilities,
+        })
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {

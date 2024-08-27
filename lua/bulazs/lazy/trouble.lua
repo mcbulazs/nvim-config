@@ -2,12 +2,11 @@ return {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-        require("trouble").setup({
-            icons = true,
-        })
+        require("trouble").setup({})
         vim.keymap.set("n", "<leader>t", function()
-            require("trouble").toggle()
+            require("trouble").toggle({
+                mode = "diagnostics",
+            })
         end)
-
     end,
 }

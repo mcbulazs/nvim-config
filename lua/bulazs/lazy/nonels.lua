@@ -18,10 +18,6 @@ return {
                     extra_args = { "--dialect", "postgres" }, -- change to your dialect
                 }),
                 null_ls.builtins.formatting.sqlfmt,
-                null_ls.builtins.formatting.biome,
-                --php remove after uni
-                null_ls.builtins.formatting.phpcsfixer,
-                null_ls.builtins.diagnostics.phpstan,
             },
         })
     end,

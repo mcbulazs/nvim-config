@@ -25,13 +25,19 @@ return {
             "nvim-telescope/telescope-fzf-native.nvim",
             build = "make",
         },
+        --"folke/trouble.nvim",
     },
 
     config = function()
+        --local open_with_trouble = require("trouble.sources.telescope").open
         require("telescope").setup({
             defaults = {
                 path_display = { "truncate", "smart" },
                 file_ignore_patterns = { "node%_modules/.*", "package%-lock.json" },
+                --               mappings = {
+                --                   n = { ["<leader>t"] = open_with_trouble },
+                --                   i = { ["<leader>t"] = open_with_trouble },
+                --               },
             },
             pickers = {
                 live_grep = {
