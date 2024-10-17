@@ -23,6 +23,8 @@ return {
                 --python
                 null_ls.builtins.formatting.black,
                 null_ls.builtins.diagnostics.pylint,
+                --biome
+                null_ls.builtins.formatting.biome,
             },
         })
     end,
