@@ -51,19 +51,20 @@ return {
         require("telescope").load_extension("fzf")
         local builtin = require("telescope.builtin")
         vim.keymap.set("n", "<leader>g", builtin.find_files, {})
-        vim.keymap.set("n", "<C-p>", builtin.git_files, {})
+        vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, {})
+        --vim.keymap.set("n", "<C-p>", builtin.git_files, {})
         vim.keymap.set("n", "gr", openReferences, { noremap = true, silent = true })
         vim.keymap.set("n", "<C-f>", builtin.live_grep)
         vim.keymap.set("n", "/", function()
             builtin.current_buffer_fuzzy_find({
-                layout_config = {
-                    width = 0.3,
-                    height = 0.4,
-                    anchor = "NE",
-                    prompt_position = "top",
-                },
-                sorting_strategy = "ascending",
-                previewer = false,
+                -- layout_config = {
+                --     width = 0.3,
+                --     height = 0.4,
+                --     anchor = "NE",
+                --     prompt_position = "top",
+                -- },
+                -- sorting_strategy = "ascending",
+                -- previewer = false,
                 fuzzy = false,
             })
         end, {
