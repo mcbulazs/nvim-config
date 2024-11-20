@@ -22,7 +22,7 @@ return {
         null_ls.builtins.formatting.sqlfmt,
         --python
         null_ls.builtins.formatting.black,
-        null_ls.builtins.diagnostics.pylint,
+        null_ls.builtins.diagnostics.mypy,
         --biome
         null_ls.builtins.formatting.biome,
         --yaml
