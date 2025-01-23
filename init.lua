@@ -1,1 +1,1 @@
-require('bulazs')
+require("bulazs")
