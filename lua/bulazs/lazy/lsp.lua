@@ -9,7 +9,6 @@ return {
   },
 
   config = function()
-    --local cmp = require("cmp")
     local cmp_lsp = require("cmp_nvim_lsp")
     local capabilities = vim.tbl_deep_extend(
       "force",
@@ -25,8 +24,6 @@ return {
     require("mason-lspconfig").setup({
       ensure_installed = {
         "lua_ls",
-        "rust_analyzer",
-        "clangd",
         "gopls",
       },
       handlers = {
@@ -51,13 +48,7 @@ return {
         end,
       },
     })
-    local clangdCapabilities = vim.lsp.protocol.make_client_capabilities()
-    clangdCapabilities.offsetEncoding = { "utf-8", "utf-16" }
-    require("lspconfig").clangd.setup({
-      capabilities = { clangdCapabilities, capabilities },
-    })
     vim.diagnostic.config({
-      -- update_in_insert = true,
       float = {
         focusable = false,
         style = "minimal",
@@ -67,11 +58,9 @@ return {
         prefix = "",
       },
     })
-
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
-        -- Enable completion triggered by <c-x><c-o>
         local opts = { buffer = ev.buf }
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
