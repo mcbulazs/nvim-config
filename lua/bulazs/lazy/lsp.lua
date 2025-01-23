@@ -3,19 +3,13 @@ return {
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-    "saadparwaiz1/cmp_luasnip",
-    "L3MON4D3/LuaSnip",
     "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
     "j-hui/fidget.nvim",
-    "hrsh7th/nvim-cmp",
     "nvimtools/none-ls.nvim",
   },
 
   config = function()
-    local cmp = require("cmp")
+    --local cmp = require("cmp")
     local cmp_lsp = require("cmp_nvim_lsp")
     local capabilities = vim.tbl_deep_extend(
       "force",
@@ -62,48 +56,6 @@ return {
     require("lspconfig").clangd.setup({
       capabilities = { clangdCapabilities, capabilities },
     })
-    cmp.setup({
-      snippet = {
-        expand = function(args)
-          require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-        end,
-      },
-      mapping = cmp.mapping.preset.insert({
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<Esc>"] = cmp.mapping.abort(),
-      }),
-
-      sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "luasnip" }, -- For luasnip users.
-      }, {
-        { name = "buffer" },
-      }),
-      window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-      },
-      sorting = {
-        priority_weight = 2,
-        comparators = {
-          require("copilot_cmp.comparators").prioritize,
-
-          -- Below is the default comparitor list and order for nvim-cmp
-          cmp.config.compare.offset,
-          -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
-          cmp.config.compare.exact,
-          cmp.config.compare.score,
-          cmp.config.compare.recently_used,
-          cmp.config.compare.locality,
-          cmp.config.compare.kind,
-          cmp.config.compare.sort_text,
-          cmp.config.compare.length,
-          cmp.config.compare.order,
-        },
-      },
-    })
-
     vim.diagnostic.config({
       -- update_in_insert = true,
       float = {

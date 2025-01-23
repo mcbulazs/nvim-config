@@ -1,0 +1,61 @@
+return {
+  "hrsh7th/nvim-cmp",
+  dependencies = {
+    "saadparwaiz1/cmp_luasnip",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "zbirenbaum/copilot-cmp",
+    "onsails/lspkind-nvim",
+  },
+  config = function()
+    -- Copilot
+    require("copilot_cmp").setup()
+
+    local cmp = require("cmp")
+    cmp.setup({
+      preselect = cmp.PreselectMode.None,
+      formatting = {
+        format = require("lspkind").cmp_format({
+          symbol_map = { Copilot = "" },
+        }),
+      },
+      snippet = {
+        expand = function(args)
+          require("luasnip").lsp_expand(args.body)
+        end,
+      },
+      mapping = cmp.mapping.preset.insert({
+        ["<CR>"] = cmp.mapping.confirm({ select = false }),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<Esc>"] = cmp.mapping.abort(),
+      }),
+      sources = cmp.config.sources({
+        { name = "copilot" },
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "path" },
+        { name = "buffer" },
+      }),
+      window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      },
+      sorting = {
+        priority_weight = 2,
+        comparators = {
+          require("copilot_cmp.comparators").prioritize,
+          cmp.config.compare.offset,
+          cmp.config.compare.exact,
+          cmp.config.compare.score,
+          cmp.config.compare.recently_used,
+          cmp.config.compare.locality,
+          cmp.config.compare.kind,
+          cmp.config.compare.sort_text,
+          cmp.config.compare.length,
+          cmp.config.compare.order,
+        },
+      },
+    })
+  end,
+}
