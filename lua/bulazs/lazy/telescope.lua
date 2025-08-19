@@ -45,7 +45,15 @@ return {
     local builtin = require("telescope.builtin")
     vim.keymap.set("n", "<leader>g", builtin.find_files, {})
     vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, {})
-    vim.keymap.set("n", "gr", openReferences, { noremap = true, silent = true })
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "*" },
+      callback = function()
+        if vim.bo.filetype ~= "markdown" then
+          vim.keymap.set("n", "gr", openReferences, { noremap = true, silent = true, buffer = true })
+        end
+      end,
+    })
+    -- vim.keymap.set("n", "gr", openReferences, { noremap = true, silent = true })
     vim.keymap.set("n", "<C-f>", builtin.live_grep)
     vim.keymap.set("v", "<C-f>", function()
       local current_register = vim.fn.getreg('"') -- Save the current register
