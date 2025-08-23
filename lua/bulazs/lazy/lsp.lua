@@ -19,8 +19,6 @@ return {
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     require("fidget").setup()
-    --Biome
-    require("lspconfig").biome.setup({})
     require("mason").setup()
     require("mason-lspconfig").setup({
       ensure_installed = {
