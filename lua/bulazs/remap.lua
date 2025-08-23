@@ -10,3 +10,9 @@ vim.keymap.set("n", "<C-q>", ":q<CR>")
 vim.keymap.set("v", "<C-y>", '"+y')
 
 vim.keymap.set("n", "<F2>", ':lua vim.diagnostic.open_float(0, {scope="line"})<CR>')
+
+pcall(vim.keymap.del, "n", "gra")
+pcall(vim.keymap.del, "x", "gra")
+pcall(vim.keymap.del, "n", "gri")
+pcall(vim.keymap.del, "n", "grn")
+pcall(vim.keymap.del, "n", "grr")

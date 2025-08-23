@@ -1,0 +1,7 @@
+{
+	"header": {
+		"prefix": "!header",
+		"body": ["---", "id: $1", "aliases: []", "tags: []", "---"],
+		"description": "obsidian default header"
+	}
+}

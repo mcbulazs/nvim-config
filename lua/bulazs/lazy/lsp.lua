@@ -5,19 +5,20 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "hrsh7th/cmp-nvim-lsp",
     "j-hui/fidget.nvim",
-    "nvimtools/none-ls.nvim",
   },
 
   config = function()
-    local cmp_lsp = require("cmp_nvim_lsp")
-    local capabilities = vim.tbl_deep_extend(
-      "force",
-      {},
-      vim.lsp.protocol.make_client_capabilities(),
-      cmp_lsp.default_capabilities()
-    )
+    --local cmp_lsp = require("cmp_nvim_lsp")
+    -- local capabilities = vim.tbl_deep_extend(
+    --   "force",
+    --   {},
+    --   vim.lsp.protocol.make_client_capabilities(),
+    --   cmp_lsp.default_capabilities()
+    -- )
 
-    require("fidget").setup({})
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+    require("fidget").setup()
     --Biome
     require("lspconfig").biome.setup({})
     require("mason").setup()
@@ -63,7 +64,9 @@ return {
       callback = function(ev)
         local opts = { buffer = ev.buf }
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+        --if vim.bo.filetype ~= "markdown" then
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+        --end
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
         vim.keymap.set("n", "<leader>f", function()
